@@ -32,6 +32,7 @@ class BaseTabBarController: UITabBarController {
         searchNavViewController.tabBarItem.image = UIImage(imageLiteralResourceName: "search")
         searchNavViewController.navigationBar.prefersLargeTitles = true
         
+        
         viewControllers = [
         appNavViewController,
         searchNavViewController

@@ -13,6 +13,7 @@
 		5C9C3C372B45E7550038D4C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9C3C352B45E7550038D4C8 /* Main.storyboard */; };
 		5C9C3C392B45E7550038D4C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9C3C382B45E7550038D4C8 /* Assets.xcassets */; };
 		5C9C3C3C2B45E7550038D4C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9C3C3A2B45E7550038D4C8 /* LaunchScreen.storyboard */; };
+		5C9C3C442B45EAF00038D4C8 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C3C432B45EAF00038D4C8 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5C9C3C382B45E7550038D4C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C9C3C3B2B45E7550038D4C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C9C3C3D2B45E7550038D4C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C9C3C432B45EAF00038D4C8 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				5C9C3C382B45E7550038D4C8 /* Assets.xcassets */,
 				5C9C3C3A2B45E7550038D4C8 /* LaunchScreen.storyboard */,
 				5C9C3C3D2B45E7550038D4C8 /* Info.plist */,
+				5C9C3C432B45EAF00038D4C8 /* BaseTabBarController.swift */,
 			);
 			path = Appstore;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C9C3C442B45EAF00038D4C8 /* BaseTabBarController.swift in Sources */,
 				5C9C3C342B45E7540038D4C8 /* ViewController.swift in Sources */,
 				5C9C3C302B45E7540038D4C8 /* AppDelegate.swift in Sources */,
 				5C9C3C322B45E7540038D4C8 /* SceneDelegate.swift in Sources */,

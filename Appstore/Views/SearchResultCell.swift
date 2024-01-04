@@ -61,13 +61,12 @@ class SearchResultCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        let labelStackView = VerticalStackView(arrangedSubviews: [
+            nameLabel, categoriesLabel, ratingsLabel
+            ])
         
         let infoTopStackView = UIStackView(arrangedSubviews: [
-        appIconImageView, 
-        VerticalStackView(arrangedSubviews: [
-            nameLabel, categoriesLabel, ratingsLabel
-            ]), 
-        getButton
+        appIconImageView, labelStackView, getButton
         ])
         
         infoTopStackView.spacing = 12

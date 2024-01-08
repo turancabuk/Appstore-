@@ -1,5 +1,5 @@
 //
-//  AppsController.swift
+//  AppsPageController.swift
 //  Appstore
 //
 //  Created by Turan Çabuk on 8.01.2024.
@@ -8,14 +8,14 @@
 import UIKit
 
 
-class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
+class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout {
 
     let cellId = "id"
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        collectionView.register(AppsGroupCellCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -28,6 +28,10 @@ class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return.init(width: view.frame.width, height: 250)
+        return.init(width: view.frame.width, height: 300)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return .init(top: 16, left: 0, bottom: 0, right: 0)
     }
 }

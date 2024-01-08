@@ -18,6 +18,8 @@ class Service {
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
             
+            // Error Control
+            
             if err != nil {
                 print("Failed to fetch apps:")
                 return

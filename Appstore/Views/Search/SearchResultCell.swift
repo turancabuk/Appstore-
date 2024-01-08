@@ -41,23 +41,11 @@ class SearchResultCell: UICollectionViewCell {
         return iv
     }()
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "App Name"
-        return label
-    }()
+    let nameLabel = UILabel(text: "App Name")
+   
+    let categoriesLabel = UILabel(text:  "Photos & Video")
     
-    let categoriesLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Photos & Video"
-        return label
-    }()
-    
-    let ratingsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "9.26M"
-        return label
-    }()
+    let ratingsLabel = UILabel(text: "9.26M")
     
     let getButton: UIButton = {
         let button = UIButton(type: .system)
@@ -117,5 +105,11 @@ class SearchResultCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+extension UILabel {
+    convenience init(text: String) {
+        self.init(frame: .zero)
+        self.text = text
     }
 }

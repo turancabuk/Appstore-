@@ -49,7 +49,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     }
     fileprivate func fetchITunesApps() {
         
-        Service.shared.fethItunes(searchTerm: "littlestepsdevelopment") { (results) in
+        Service.shared.fethItunes(searchTerm: "Facebook") { (results) in
             
             self.appResults = results
             

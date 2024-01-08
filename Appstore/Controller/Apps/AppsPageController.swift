@@ -12,6 +12,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
 
     let cellId = "id"
     let headerId = "headerId"
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +20,15 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        
+        fetchData()
+    }
+    fileprivate func fetchData() {
+
+        Service.shared.fetchGames { (appGroup) in
+            
+            print(appGroup?.feed.results)
+        }
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         

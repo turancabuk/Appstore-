@@ -58,7 +58,7 @@ class Service {
             
             do{
                 let appGroup = try JSONDecoder().decode(AppGroup.self, from: data!)
-                appGroup.feed.results.forEach({print($0.name)})
+
                 //top free apps
                 
                 completion(appGroup)
@@ -67,6 +67,6 @@ class Service {
                 print("Failed to fetch the games:", err)
             }
         }.resume()
-        
     }
 }
+

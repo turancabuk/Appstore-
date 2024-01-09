@@ -11,6 +11,7 @@ class Service {
     
     static let shared = Service() // Singleton
     
+    // Service Call
     func fethItunes(searchTerm: String, completion: @escaping ([Result]) -> ()) {
         
         let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
@@ -40,17 +41,43 @@ class Service {
         }.resume()
     }
     
-    func fetchGames(completion: @escaping (AppGroup?) -> ()) {
+    // 1
+    func fetchFreeApps(completion: @escaping (AppGroup?, Error?) -> ()) {
         
-        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json") else { return }
+         let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json"
         
-        URLSession.shared.dataTask(with: url) { data, resp, err in
+        fetchAppGroup(urlString: urlString, completion: completion)
+    }
+    
+    // 2
+    func fetchPaidApps(completion: @escaping (AppGroup?, Error?) -> ()) {
+        
+        let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/25/apps.json"
+        
+        fetchAppGroup(urlString: urlString, completion: completion)
+    }
+    
+    // 3
+    func fetchTopAlbums(completion: @escaping (AppGroup?, Error?) -> ()) {
+        
+        let urlString = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/25/albums.json"
+        
+        fetchAppGroup(urlString: urlString, completion: completion)
+    }
+    
+    //Helper
+    func fetchAppGroup(urlString: String, completion: @escaping (AppGroup?, Error?) -> Void) {
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
             
             //Error Control
             
             if let err = err {
                 
-                print("Failed to fetch the games:", err)
+                completion(nil, err)
+                print("Failed to fetch the json:", err)
                 return
             }
             
@@ -59,12 +86,11 @@ class Service {
             do{
                 let appGroup = try JSONDecoder().decode(AppGroup.self, from: data!)
 
-                //top free apps
                 
-                completion(appGroup)
+                completion(appGroup, nil)
             }catch let err{
                 
-                print("Failed to fetch the games:", err)
+                print("Failed to fetch the json:", err)
             }
         }.resume()
     }

@@ -38,9 +38,9 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
             
-            Service.shared.fethItunes(searchTerm: searchText) { (res) in
+            Service.shared.fethItunes(searchTerm: searchText) { (resp, Error) in
                 
-                self.appResults = res
+                self.appResults = resp?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -49,9 +49,9 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     }
     fileprivate func fetchITunesApps() {
         
-        Service.shared.fethItunes(searchTerm: "Facebook") { (results) in
+        Service.shared.fethItunes(searchTerm: "Facebook") { (resp, Error) in
             
-            self.appResults = results
+            self.appResults = resp?.results ?? []
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

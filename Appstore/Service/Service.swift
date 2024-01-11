@@ -11,33 +11,30 @@ class Service {
     
     static let shared = Service() // Singleton
     
-    // Service Call
-    func fethItunes(searchTerm: String, completion: @escaping ([Result]) -> ()) {
+    
+    //Generic Network Call
+    func fetchGenericCall<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> Void) {
         
-        let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { data, resp, err in
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
             
-            // Error Control
+            //Error Control
             
             if err != nil {
-                print("Failed to fetch apps:")
+                
+                completion(nil, err)
                 return
             }
             
             //Succes
             
-            guard let data = data else { return }
             do{
-                let searchResult = try
-                JSONDecoder().decode(SearchResult.self, from: data)
-                
-                completion(searchResult.results)
-            } catch {
-                print("Failed to decode json:", error)
+                let results = try JSONDecoder().decode(T.self, from: data!)
+                completion(results, nil)
+            }catch let err{
+                print("Failed to fetch the json:", err)
             }
-            
         }.resume()
     }
     
@@ -46,7 +43,7 @@ class Service {
         
          let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json"
         
-        fetchAppGroup(urlString: urlString, completion: completion)
+        fetchGenericCall(urlString: urlString, completion: completion)
     }
     
     // 2
@@ -54,7 +51,7 @@ class Service {
         
         let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/25/apps.json"
         
-        fetchAppGroup(urlString: urlString, completion: completion)
+        fetchGenericCall(urlString: urlString, completion: completion)
     }
     
     // 3
@@ -62,67 +59,26 @@ class Service {
         
         let urlString = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/25/albums.json"
         
-        fetchAppGroup(urlString: urlString, completion: completion)
+        fetchGenericCall(urlString: urlString, completion: completion)
     }
     
-    //Helper
-    func fetchAppGroup(urlString: String, completion: @escaping (AppGroup?, Error?) -> Void) {
-        
-        guard let url = URL(string: urlString) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
-            
-            //Error Control
-            
-            if let err = err {
-                
-                completion(nil, err)
-                print("Failed to fetch the json:", err)
-                return
-            }
-            
-            //Succes
-            
-            do{
-                let appGroup = try JSONDecoder().decode(AppGroup.self, from: data!)
 
-                
-                completion(appGroup, nil)
-            }catch let err{
-                
-                print("Failed to fetch the json:", err)
-            }
-        }.resume()
-    }
     
     //Social Apps
     func fetchSocialApps(completion: @escaping ([SocialApps]?, Error?) -> Void) {
         
         let urlString = "https://api.letsbuildthatapp.com/appstore/social"
         
-        guard let url = URL(string: urlString) else { return }
 
-        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+        fetchGenericCall(urlString: urlString, completion: completion)
+    }
+    
+    //Search Call
+    func fethItunes(searchTerm: String, completion: @escaping (SearchResult?, Error?) -> ()) {
             
-            //Error Control
-            
-            if let err = err {
-                
-                completion(nil, err)
-                print("Failed to fetch the json:", err)
-                return
-            }
-            //Succes
-            do{
-                let appResults = try JSONDecoder().decode([SocialApps].self, from: data!)
-
-                
-                completion(appResults, nil)
-            }catch let err{
-                
-                print("Failed to fetch the json:", err)
-            }
-        }.resume()
+            let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
+ 
+            fetchGenericCall(urlString: urlString, completion: completion)
     }
 }
 

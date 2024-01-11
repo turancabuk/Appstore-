@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C495BBD2B4EF3A7009D1ECE /* SocialApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C495BBC2B4EF3A7009D1ECE /* SocialApps.swift */; };
 		5C82A25F2B46DCCD002B183B /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C82A25E2B46DCCD002B183B /* AppsSearchController.swift */; };
 		5C82A2622B46EC4B002B183B /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C82A2612B46EC4B002B183B /* SearchResultCell.swift */; };
 		5C82A2652B470455002B183B /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C82A2642B470455002B183B /* UIView+Layout.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C495BBC2B4EF3A7009D1ECE /* SocialApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApps.swift; sourceTree = "<group>"; };
 		5C82A25E2B46DCCD002B183B /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
 		5C82A2612B46EC4B002B183B /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		5C82A2642B470455002B183B /* UIView+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				5C82A2692B4744FC002B183B /* SearchResult.swift */,
 				5C82A28B2B4C7EC3002B183B /* AppGroup.swift */,
+				5C495BBC2B4EF3A7009D1ECE /* SocialApps.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				5C82A2862B4C5CE8002B183B /* AppsPageHeader.swift in Sources */,
 				5C9C3C322B45E7540038D4C8 /* SceneDelegate.swift in Sources */,
 				5C82A2822B4C3FAF002B183B /* Extensions.swift in Sources */,
+				5C495BBD2B4EF3A7009D1ECE /* SocialApps.swift in Sources */,
 				5C82A2782B4C0909002B183B /* BaseListController.swift in Sources */,
 				5C82A28C2B4C7EC3002B183B /* AppGroup.swift in Sources */,
 				5C82A28A2B4C6491002B183B /* AppsHeaderCell.swift in Sources */,

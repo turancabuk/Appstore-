@@ -12,7 +12,7 @@ class AppsHeaderCell: UICollectionViewCell {
     let companyLabel = UILabel(text: "Facebook", Font: .boldSystemFont(ofSize: 12))
     let titleLabel = UILabel(text: "Keeping up with friends is faster than ever", Font: .systemFont(ofSize: 24))
     let imageView = UIImageView(cornerRadius: 8)
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         

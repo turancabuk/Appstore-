@@ -11,16 +11,15 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
 
     let celld = "cellId"
     var appGroup: AppGroup?
-
+    var didSelectHandler: ((FeedResult) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: celld)
         
-        if collectionViewLayout is UICollectionViewFlowLayout {
-            
-        } 
+        
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -35,10 +34,16 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
             cell.nameLabel.text = app?.name
             cell.companyLabel.text = app?.artistName
             cell.imageView.sd_setImage(with: URL(string: app?.artworkUrl100 ?? ""))
+  
         }
         return cell
     }
-    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let app = appGroup?.feed.results[indexPath.item] {
+            didSelectHandler?(app)
+        }
+    }
     let topBottomPadding: CGFloat = 12
     let lineSpacing: CGFloat = 10
     

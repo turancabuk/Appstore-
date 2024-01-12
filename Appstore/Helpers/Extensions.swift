@@ -8,10 +8,11 @@
 import UIKit
 
 extension UILabel {
-    convenience init(text: String, Font: UIFont){
+    convenience init(text: String, Font: UIFont, numberOfLines: Int = 1){
         self.init(frame: .zero)
         self.text = text
         self.font = Font
+        self.numberOfLines = numberOfLines
     }
 }
 

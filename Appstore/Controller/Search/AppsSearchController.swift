@@ -50,9 +50,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     fileprivate func fetchITunesApps() {
         
         Service.shared.fethItunes(searchTerm: "Facebook") { (resp, Error) in
-            
             self.appResults = resp?.results ?? []
-            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -69,7 +67,6 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
-        
         cell.appResult = appResults[indexPath.item]
         
         return cell

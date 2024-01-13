@@ -18,7 +18,6 @@ class AppDetailCell: UICollectionViewCell {
         didSet {
             nameLabel.text = app?.trackName
             releaseNotesLabel.text = app?.releaseNotes
-            releaseNotesLabel.backgroundColor = .lightGray
             appIconImageView.sd_setImage(with: URL(string: app?.artworkUrl100 ?? ""))
             priceButton.setTitle(app?.formattedPrice, for: .normal)
         }

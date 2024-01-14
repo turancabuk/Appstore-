@@ -57,7 +57,7 @@ class Service {
     // 3
     func fetchTopAlbums(completion: @escaping (AppGroup?, Error?) -> ()) {
         
-        let urlString = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/25/albums.json"
+        let urlString = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/10/albums.json"
         
         fetchGenericCall(urlString: urlString, completion: completion)
     }

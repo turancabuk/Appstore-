@@ -11,6 +11,7 @@ class PrewCell: UICollectionViewCell {
     
     let prevHorizontalController = PreviewScreenshotsController()
     let prevLabel = UILabel(text: "Preview", Font: .boldSystemFont(ofSize: 20))
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

@@ -37,7 +37,7 @@
 		5C9C3C392B45E7550038D4C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C9C3C382B45E7550038D4C8 /* Assets.xcassets */; };
 		5C9C3C3C2B45E7550038D4C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C9C3C3A2B45E7550038D4C8 /* LaunchScreen.storyboard */; };
 		5C9C3C442B45EAF00038D4C8 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C3C432B45EAF00038D4C8 /* BaseTabBarController.swift */; };
-		5CBA79292B529394007DD613 /* PrewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA79282B529394007DD613 /* PrewCell.swift */; };
+		5CBA79292B529394007DD613 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA79282B529394007DD613 /* PreviewCell.swift */; };
 		5CBA792B2B529625007DD613 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA792A2B529625007DD613 /* PreviewScreenshotsController.swift */; };
 		5CBA792D2B52D601007DD613 /* ScreenshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA792C2B52D601007DD613 /* ScreenshotCell.swift */; };
 		5CBA792F2B52D764007DD613 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA792E2B52D764007DD613 /* ReviewRowCell.swift */; };
@@ -77,7 +77,7 @@
 		5C9C3C3B2B45E7550038D4C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C9C3C3D2B45E7550038D4C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C9C3C432B45EAF00038D4C8 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		5CBA79282B529394007DD613 /* PrewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrewCell.swift; sourceTree = "<group>"; };
+		5CBA79282B529394007DD613 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		5CBA792A2B529625007DD613 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
 		5CBA792C2B52D601007DD613 /* ScreenshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCell.swift; sourceTree = "<group>"; };
 		5CBA792E2B52D764007DD613 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
@@ -103,10 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				5C0AC5932B519F2D00548566 /* AppDetailCell.swift */,
-				5CBA79282B529394007DD613 /* PrewCell.swift */,
-				5CBA792C2B52D601007DD613 /* ScreenshotCell.swift */,
+				5CBA79282B529394007DD613 /* PreviewCell.swift */,
 				5CBA792E2B52D764007DD613 /* ReviewRowCell.swift */,
 				5CBA79342B52E11C007DD613 /* ReviewCell.swift */,
+				5CBA792C2B52D601007DD613 /* ScreenshotCell.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -231,8 +231,8 @@
 		5CB17C852B51B2FB00A2281A /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				5CBA792A2B529625007DD613 /* PreviewScreenshotsController.swift */,
 				5C0AC5912B5172DD00548566 /* AppDetailController.swift */,
+				5CBA792A2B529625007DD613 /* PreviewScreenshotsController.swift */,
 				5CBA79322B52DCEF007DD613 /* ReviewsController.swift */,
 			);
 			path = Details;
@@ -323,7 +323,7 @@
 				5CBA792B2B529625007DD613 /* PreviewScreenshotsController.swift in Sources */,
 				5CBA792F2B52D764007DD613 /* ReviewRowCell.swift in Sources */,
 				5C9C3C442B45EAF00038D4C8 /* BaseTabBarController.swift in Sources */,
-				5CBA79292B529394007DD613 /* PrewCell.swift in Sources */,
+				5CBA79292B529394007DD613 /* PreviewCell.swift in Sources */,
 				5C9C3C342B45E7540038D4C8 /* ViewController.swift in Sources */,
 				5CBA79332B52DCEF007DD613 /* ReviewsController.swift in Sources */,
 				5C9C3C302B45E7540038D4C8 /* AppDelegate.swift in Sources */,

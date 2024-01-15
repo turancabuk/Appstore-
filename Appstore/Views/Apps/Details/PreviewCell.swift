@@ -1,5 +1,5 @@
 //
-//  PrewCell.swift
+//  PreviewCell.swift
 //  Appstore
 //
 //  Created by Turan Çabuk on 13.01.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PrewCell: UICollectionViewCell {
+class PreviewCell: UICollectionViewCell {
     
 
     let prevHorizontalController = PreviewScreenshotsController()

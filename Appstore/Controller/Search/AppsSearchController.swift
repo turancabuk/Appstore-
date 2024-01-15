@@ -10,10 +10,8 @@ import SDWebImage
 
 class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
-    fileprivate let cellId = "id123"
-    
-    fileprivate var appResults = [Result]()
-    
+    let cellId = "id123"
+    var appResults = [Result]()
     var timer: Timer?
     
     fileprivate var searchController = UISearchController(searchResultsController: nil)
@@ -24,7 +22,6 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
         
         fetchITunesApps()
-        
         setSearchController()
     }
     fileprivate func setSearchController() {
@@ -70,5 +67,11 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         cell.appResult = appResults[indexPath.item]
         
         return cell
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let appId = appResults[indexPath.item].trackId
+        let appDetailController = AppDetailController(appId: String(appId))
+        navigationController?.pushViewController(appDetailController, animated: true)
     }
 }

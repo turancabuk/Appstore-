@@ -14,7 +14,7 @@ class SearchResultCell: UICollectionViewCell {
         didSet {
             nameLabel.text = appResult.trackName
             categoriesLabel.text = appResult.primaryGenreName
-            ratingsLabel.text = String(format: "%.1f", appResult.averageUserRating)
+            ratingsLabel.text = String(format: "%.1f", appResult.averageUserRating ?? "")
             
             let url = URL(string: appResult.artworkUrl100)
             
@@ -50,9 +50,8 @@ class SearchResultCell: UICollectionViewCell {
     let getButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("GET", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.backgroundColor = UIColor(white: 0.95, alpha: 0.8)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.backgroundColor = .gray
         button.layer.cornerRadius = 12
         button.widthAnchor.constraint(equalToConstant: 80).isActive = true
         button.heightAnchor.constraint(equalToConstant: 32).isActive = true

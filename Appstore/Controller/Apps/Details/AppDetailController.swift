@@ -21,12 +21,12 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
             }
             let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
             Service.shared.fetchGenericCall(urlString: reviewsUrl) { (reviews: Reviews?, err) in
-
+                
+                self.reviewsResults = reviews
                 if let error = err {
                     print("failed to decode reviews:", error)
                     return
                 }
-                self.reviewsResults = reviews
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -84,6 +84,10 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         }else{
             return .init(width: view.frame.width, height: 250)
         }
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return .init(top: 0, left: 0, bottom: 16, right: 0)
     }
 }
  

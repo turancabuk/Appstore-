@@ -1,0 +1,34 @@
+//
+//  Reviews.swift
+//  Appstore
+//
+//  Created by Turan Çabuk on 14.01.2024.
+//
+
+import Foundation
+
+struct Reviews: Decodable {
+    
+    let feed: ReviewFeed
+}
+
+struct ReviewFeed: Decodable {
+    
+    let entry: [Entry]
+}
+
+struct Entry: Decodable {
+    
+    let author: Author
+    let title: Label
+    let content: Label
+}
+
+struct Author: Decodable {
+    
+    let name: Label
+}
+struct Label: Decodable {
+    
+    let label: String
+}

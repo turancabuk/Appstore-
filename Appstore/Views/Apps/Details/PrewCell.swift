@@ -9,6 +9,7 @@ import UIKit
 
 class PrewCell: UICollectionViewCell {
     
+
     let prevHorizontalController = PreviewScreenshotsController()
     let prevLabel = UILabel(text: "Preview", Font: .boldSystemFont(ofSize: 20))
     

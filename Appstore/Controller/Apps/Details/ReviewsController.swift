@@ -10,7 +10,11 @@ import UIKit
 class ReviewsController: HorizontalSnappingController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
-    
+    var reviews: Reviews? {
+        didSet{
+            self.collectionView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,12 +24,16 @@ class ReviewsController: HorizontalSnappingController, UICollectionViewDelegateF
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 4
+        return reviews?.feed.entry.count ?? 0
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ReviewCell
         
+        let reviews = reviews?.feed.entry[indexPath.item]
+        cell.titleLabel.text = reviews?.title.label
+        cell.bodyLabel.text = reviews?.content.label
+        cell.authorLabel.text = reviews?.author.name.label
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

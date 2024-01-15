@@ -43,6 +43,7 @@
 		5CBA792F2B52D764007DD613 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA792E2B52D764007DD613 /* ReviewRowCell.swift */; };
 		5CBA79332B52DCEF007DD613 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA79322B52DCEF007DD613 /* ReviewsController.swift */; };
 		5CBA79352B52E11C007DD613 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA79342B52E11C007DD613 /* ReviewCell.swift */; };
+		5CBA79372B540FB3007DD613 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA79362B540FB3007DD613 /* Reviews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		5CBA792E2B52D764007DD613 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
 		5CBA79322B52DCEF007DD613 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
 		5CBA79342B52E11C007DD613 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		5CBA79362B540FB3007DD613 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				5C82A2692B4744FC002B183B /* SearchResult.swift */,
 				5C82A28B2B4C7EC3002B183B /* AppGroup.swift */,
 				5C495BBC2B4EF3A7009D1ECE /* SocialApps.swift */,
+				5CBA79362B540FB3007DD613 /* Reviews.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				5C9C3C302B45E7540038D4C8 /* AppDelegate.swift in Sources */,
 				5C82A25F2B46DCCD002B183B /* AppsSearchController.swift in Sources */,
 				5C82A2672B47201B002B183B /* VerticalStackView.swift in Sources */,
+				5CBA79372B540FB3007DD613 /* Reviews.swift in Sources */,
 				5C82A26C2B485795002B183B /* Service.swift in Sources */,
 				5C82A2622B46EC4B002B183B /* SearchResultCell.swift in Sources */,
 				5CBA792D2B52D601007DD613 /* ScreenshotCell.swift in Sources */,

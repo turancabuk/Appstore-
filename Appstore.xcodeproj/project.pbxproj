@@ -46,6 +46,8 @@
 		5CBA79372B540FB3007DD613 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA79362B540FB3007DD613 /* Reviews.swift */; };
 		5CDCCB8E2B5689C000CD01C2 /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB8D2B5689C000CD01C2 /* TodayController.swift */; };
 		5CDCCB912B568BA000CD01C2 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB902B568BA000CD01C2 /* TodayCell.swift */; };
+		5CDCCB932B56B57600CD01C2 /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB922B56B57600CD01C2 /* AppFullscreenController.swift */; };
+		5CDCCB952B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB942B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		5CBA79362B540FB3007DD613 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		5CDCCB8D2B5689C000CD01C2 /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
 		5CDCCB902B568BA000CD01C2 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		5CDCCB922B56B57600CD01C2 /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
+		5CDCCB942B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				5CDCCB8D2B5689C000CD01C2 /* TodayController.swift */,
+				5CDCCB922B56B57600CD01C2 /* AppFullscreenController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				5CDCCB902B568BA000CD01C2 /* TodayCell.swift */,
+				5CDCCB942B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -367,6 +373,8 @@
 				5C82A28C2B4C7EC3002B183B /* AppGroup.swift in Sources */,
 				5CDCCB912B568BA000CD01C2 /* TodayCell.swift in Sources */,
 				5C82A28A2B4C6491002B183B /* AppsHeaderCell.swift in Sources */,
+				5CDCCB952B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift in Sources */,
+				5CDCCB932B56B57600CD01C2 /* AppFullscreenController.swift in Sources */,
 				5C0AC5942B519F2D00548566 /* AppDetailCell.swift in Sources */,
 				5C82A2762B4C0740002B183B /* AppsPageController.swift in Sources */,
 				5C495BC12B506FE9009D1ECE /* HorizontalSnappingController.swift in Sources */,

@@ -48,6 +48,8 @@
 		5CDCCB912B568BA000CD01C2 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB902B568BA000CD01C2 /* TodayCell.swift */; };
 		5CDCCB932B56B57600CD01C2 /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB922B56B57600CD01C2 /* AppFullscreenController.swift */; };
 		5CDCCB952B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB942B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift */; };
+		5CDCCB972B57DF0400CD01C2 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB962B57DF0400CD01C2 /* AppFullscreenHeaderCell.swift */; };
+		5CDCCB992B57ECA800CD01C2 /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDCCB982B57ECA800CD01C2 /* TodayItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,8 @@
 		5CDCCB902B568BA000CD01C2 /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
 		5CDCCB922B56B57600CD01C2 /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
 		5CDCCB942B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
+		5CDCCB962B57DF0400CD01C2 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
+		5CDCCB982B57ECA800CD01C2 /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 				5C82A28B2B4C7EC3002B183B /* AppGroup.swift */,
 				5C495BBC2B4EF3A7009D1ECE /* SocialApps.swift */,
 				5CBA79362B540FB3007DD613 /* Reviews.swift */,
+				5CDCCB982B57ECA800CD01C2 /* TodayItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 			children = (
 				5CDCCB902B568BA000CD01C2 /* TodayCell.swift */,
 				5CDCCB942B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift */,
+				5CDCCB962B57DF0400CD01C2 /* AppFullscreenHeaderCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -344,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CDCCB992B57ECA800CD01C2 /* TodayItem.swift in Sources */,
 				5C82A2652B470455002B183B /* UIView+Layout.swift in Sources */,
 				5C495BBF2B506E25009D1ECE /* BetterSnappingLayout.swift in Sources */,
 				5C82A26A2B4744FC002B183B /* SearchResult.swift in Sources */,
@@ -374,6 +381,7 @@
 				5CDCCB912B568BA000CD01C2 /* TodayCell.swift in Sources */,
 				5C82A28A2B4C6491002B183B /* AppsHeaderCell.swift in Sources */,
 				5CDCCB952B56B5EA00CD01C2 /* AppFullscreenDescriptionCell.swift in Sources */,
+				5CDCCB972B57DF0400CD01C2 /* AppFullscreenHeaderCell.swift in Sources */,
 				5CDCCB932B56B57600CD01C2 /* AppFullscreenController.swift in Sources */,
 				5C0AC5942B519F2D00548566 /* AppDetailCell.swift in Sources */,
 				5C82A2762B4C0740002B183B /* AppsPageController.swift in Sources */,

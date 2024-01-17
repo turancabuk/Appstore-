@@ -38,7 +38,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         fetchData()
     }
     fileprivate func fetchData() {
-        let urlString = "https://itunes.apple.com/lookup?id=\(appId ?? "")"
+        let urlString = "https://itunes.apple.com/lookup?id=\(appId )"
         Service.shared.fetchGenericCall(urlString: urlString) { (result: SearchResult?, err) in
             let app = result?.results.first
             self.appDetails = app
@@ -46,7 +46,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
                 self.collectionView.reloadData()
             }
         }
-        let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId ?? "")/sortby=mostrecent/json?l=en&cc=us"
+        let reviewsUrl = "https://itunes.apple.com/rss/customerreviews/page=1/id=\(appId )/sortby=mostrecent/json?l=en&cc=us"
         Service.shared.fetchGenericCall(urlString: reviewsUrl) { (reviews: Reviews?, err) in
             
             self.reviewsResults = reviews

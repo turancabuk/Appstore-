@@ -9,17 +9,41 @@ import UIKit
 
 class TodayCell: UICollectionViewCell {
     
+    var todayItem: TodayItem! {
+        didSet {
+            categoryLabel.text = todayItem.category
+            titleLabel.text = todayItem.title
+            imageView.image = todayItem.image
+            descriptionLabel.text = todayItem.description
+        }
+    }
+    let categoryLabel = UILabel()
+    let titleLabel = UILabel()
     let imageView = UIImageView()
+    let descriptionLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .white
         layer.cornerRadius = 16
-        imageView.image = #imageLiteral(resourceName: "garden")
+        clipsToBounds = true
         
-        addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
-        imageView.centerInSuperview(size: .init(width: 200, height: 200))
+        categoryLabel.font = .boldSystemFont(ofSize: 20)
+        titleLabel.font = .boldSystemFont(ofSize: 26)
+        descriptionLabel.font = .systemFont(ofSize: 16)
+        descriptionLabel.numberOfLines = 0
+        
+        let imageContainerView = UIView()
+        imageContainerView.addSubview(imageView)
+        imageView.centerInSuperview(size: .init(width: 240, height: 240))
+        
+        let stackView = VerticalStackView(arrangedSubviews: [
+        categoryLabel, titleLabel, imageContainerView, descriptionLabel
+        ], spacing: 8 )
+        addSubview(stackView)
+        stackView.fillSuperview(padding: UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24))
     }
     
     required init?(coder: NSCoder) {

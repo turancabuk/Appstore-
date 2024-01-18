@@ -9,21 +9,16 @@ import UIKit
 
 class TodayMultipleAppCell: BaseTodayCell {
     
-    let multipleAppsController = UIViewController()
+    let multipleAppsController = MultipleAppsController()
 
     override var todayItem: TodayItem! {
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
-
         }
     }
     let categoryLabel = UILabel()
     let titleLabel = UILabel()
-    let imageView = UIImageView()
-    let descriptionLabel = UILabel()
-    var topConstraint: NSLayoutConstraint!
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,12 +27,10 @@ class TodayMultipleAppCell: BaseTodayCell {
         layer.cornerRadius = 16
         clipsToBounds = true
         
-        imageView.contentMode = .scaleAspectFill
         titleLabel.numberOfLines = 0
         categoryLabel.font = .boldSystemFont(ofSize: 20)
         titleLabel.font = .boldSystemFont(ofSize: 26)
-        descriptionLabel.font = .systemFont(ofSize: 16)
-        descriptionLabel.numberOfLines = 0
+
         
         let stackView = VerticalStackView(arrangedSubviews: [
             categoryLabel, titleLabel, multipleAppsController.view

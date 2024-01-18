@@ -31,15 +31,12 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
 
         
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
-        
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
         view.addSubview(activityIndicator)
         activityIndicator.fillSuperview()
         
         fetchData()
-        
-        
         
     }
     fileprivate func fetchData() {

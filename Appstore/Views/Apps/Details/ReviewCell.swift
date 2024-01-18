@@ -10,11 +10,8 @@ import UIKit
 class ReviewCell: UICollectionViewCell {
     
     let titleLabel = UILabel(text: "Review Title", Font: .boldSystemFont(ofSize: 18))
-    
     let authorLabel = UILabel(text: "Author", Font: .systemFont(ofSize: 16))
-    
     let starsLabel = UILabel(text: "Stars", Font: .systemFont(ofSize: 14))
-    
     let starsStackView: UIStackView = {
         var arrangedSubviews = [UIView]()
         (0..<5).forEach({ (_) in

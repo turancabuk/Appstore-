@@ -1,30 +1,30 @@
 //
-//  TodayCell.swift
+//  TodayMultipleAppCell.swift
 //  Appstore
 //
-//  Created by Turan Çabuk on 16.01.2024.
+//  Created by Turan Çabuk on 18.01.2024.
 //
 
 import UIKit
 
-class TodayCell: BaseTodayCell {
+class TodayMultipleAppCell: BaseTodayCell {
     
+    let multipleAppsController = UIViewController()
+
     override var todayItem: TodayItem! {
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
-            imageView.image = todayItem.image
-            descriptionLabel.text = todayItem.description
-            backgroundColor = todayItem.backgroundColor
+
         }
     }
-    
     let categoryLabel = UILabel()
     let titleLabel = UILabel()
-    let imageView = UIImageView()    
+    let imageView = UIImageView()
     let descriptionLabel = UILabel()
     var topConstraint: NSLayoutConstraint!
     
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -39,22 +39,15 @@ class TodayCell: BaseTodayCell {
         descriptionLabel.font = .systemFont(ofSize: 16)
         descriptionLabel.numberOfLines = 0
         
-        let imageContainerView = UIView()
-        imageContainerView.addSubview(imageView)
-        imageView.centerInSuperview(size: .init(width: 240, height: 240))
-        
         let stackView = VerticalStackView(arrangedSubviews: [
-            categoryLabel, titleLabel, imageContainerView, descriptionLabel
-            ], spacing: 8)
+            categoryLabel, titleLabel, multipleAppsController.view
+        ], spacing:  12)
+         
         addSubview(stackView)
-        stackView.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 24, bottom: 24, right: 24))
-        self.topConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
-        self.topConstraint.isActive = true
-        
+        stackView.fillSuperview(padding: UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24))
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
 }

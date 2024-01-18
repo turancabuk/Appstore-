@@ -17,6 +17,7 @@ class AppFullscreenController: UITableViewController {
         
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,8 +44,9 @@ class AppFullscreenController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 450
+            return 500
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
+    
 }

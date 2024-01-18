@@ -9,16 +9,26 @@ import UIKit
 
 class AppsHeaderCell: UICollectionViewCell {
     
-    let companyLabel = UILabel(text: "Facebook", Font: .boldSystemFont(ofSize: 12))
-    let titleLabel = UILabel(text: "Keeping up with friends is faster than ever", Font: .systemFont(ofSize: 24))
-    let imageView = UIImageView(cornerRadius: 8)
+    var socialApps: SocialApps! {
+        didSet{
+            companyLabel.text = socialApps.name
+            titleLabel.text = socialApps.tagline
+            imageView.sd_setImage(with: URL(string: socialApps.imageUrl))
+        }
+    }
+    let companyLabel = UILabel()
+    let titleLabel = UILabel()
+    let imageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         companyLabel.textColor = .blue
+        companyLabel.font = .boldSystemFont(ofSize: 12)
         titleLabel.numberOfLines = 2
-        imageView.backgroundColor = .red
+        titleLabel.font = .systemFont(ofSize: 24)
+        imageView.layer.cornerRadius = 8
+        
         
         let stackView = VerticalStackView(arrangedSubviews: [
         companyLabel, titleLabel, imageView

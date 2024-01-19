@@ -185,6 +185,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         let collectionView = gesture.view
         var superView = collectionView?.superview
         
+        
         while superView != nil {
             if let cell = superView as? TodayMultipleAppCell {
                 

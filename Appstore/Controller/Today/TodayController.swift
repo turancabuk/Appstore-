@@ -10,7 +10,8 @@ import UIKit
 class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     var appFullscreenController: AppFullscreenController!
-    
+    var appResults = [Result]()
+   
     var topConstraint: NSLayoutConstraint?
     var leadingConstraint: NSLayoutConstraint?
     var widthConstraint: NSLayoutConstraint?
@@ -112,15 +113,21 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         let cellId = items[indexPath.item].celltype.rawValue
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
         cell.todayItem = items[indexPath.item]
+        
+        (cell as? TodayMultipleAppCell)?.multipleAppsController.collectionView.addGestureRecognizer(UITapGestureRecognizer(
+            target: self, action: #selector(handleMultipleAppsTap)))
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if items[indexPath.item].celltype == .multiple {
-            let fullController = MultipleAppsController(mode: .fullScreen)
+            let fullController = MultipleAppsController(mode: .fullscreen)
             fullController.results = self.items[indexPath.item].apps
-            fullController.collectionView.contentInset = .init(top: 60, left: 20, bottom: 0, right: 10)
-            present(fullController, animated: true)
+            let navController = UINavigationController(rootViewController: fullController)
+            navController.modalPresentationStyle = .fullScreen
+            present(navController, animated: true)
+            
+            return
         }
         
         let appFullscreenController = AppFullscreenController()
@@ -170,8 +177,27 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 32
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 32, left: 0, bottom: 32, right: 0)
+    }
+    @objc func handleMultipleAppsTap(gesture: UITapGestureRecognizer) {
+        
+        let collectionView = gesture.view
+        var superView = collectionView?.superview
+        
+        
+        while superView != nil {
+            if let cell = superView as? TodayMultipleAppCell {
+                
+                guard let indexPath = self.collectionView.indexPath(for: cell) else {return}
+                let apps = self.items[indexPath.item].apps
+                let fullController = MultipleAppsController(mode: .fullscreen)
+                fullController.results = apps
+                let navController = UINavigationController(rootViewController: fullController)
+                navController.modalPresentationStyle = .fullScreen
+                present(navController, animated: true)
+            }
+            superView = superView?.superview
+        }
     }
 }

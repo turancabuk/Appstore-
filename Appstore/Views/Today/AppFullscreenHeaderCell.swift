@@ -24,6 +24,8 @@ class AppFullscreenHeaderCell: UITableViewCell {
         todayCell.fillSuperview()
         
         addSubview(closeButton)
+        sendSubviewToBack(contentView)
+        
         closeButton.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 12), size: .init(width: 80, height: 38))
     }
     

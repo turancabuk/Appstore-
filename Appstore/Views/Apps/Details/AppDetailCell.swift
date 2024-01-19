@@ -10,8 +10,8 @@ import UIKit
 class AppDetailCell: UICollectionViewCell {
     
     let appIconImageView = UIImageView(cornerRadius: 16)
-    let nameLabel = UILabel(text: "App Name", Font: .boldSystemFont(ofSize: 24), numberOfLines: 2)
-    let priceButton = UIButton(title: "$4.99")
+    let nameLabel = UILabel(text: "", Font: .boldSystemFont(ofSize: 24), numberOfLines: 2)
+    let priceButton = UIButton(title: "")
     let whatsNewLabel = UILabel(text: "What's New", Font: .boldSystemFont(ofSize: 20))
     let releaseNotesLabel = UILabel(text: "Release Notes", Font: .systemFont(ofSize: 16), numberOfLines: 0)
     var app: Result! {

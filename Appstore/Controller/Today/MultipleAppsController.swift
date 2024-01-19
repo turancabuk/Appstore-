@@ -12,10 +12,10 @@ class MultipleAppsController: BaseListController, UICollectionViewDelegateFlowLa
     let cellId = "cellId"
     var results =  [FeedResult]()
     fileprivate let mode: Mode
-    var closeButton: UIButton = {
-        var button = UIButton(type: .system)
+    let closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "close_button"), for: .normal)
         button.tintColor = .darkGray
-        button.setImage(UIImage(named: "close_button"), for: .normal)
         button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
         return button
     }()
@@ -23,19 +23,24 @@ class MultipleAppsController: BaseListController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if mode == .fullScreen {
+        if mode == .fullscreen {
             setupCloseButton()
+            navigationController?.navigationBar.isHidden = true
         }
         collectionView.register(MultipleAppsCell.self, forCellWithReuseIdentifier: cellId)
         
-        
     }
+    
+    override var prefersStatusBarHidden: Bool { return true }
+
+    
     func setupCloseButton() {
         
         view.addSubview(closeButton)
+        
         closeButton.anchor(
             top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(
-                top: 20, left: 0, bottom: 0, right: 16), size: .init(
+                top: 50, left: 0, bottom: 0, right: 16), size: .init(
                     width: 44, height: 44))
     }
     
@@ -53,13 +58,33 @@ class MultipleAppsController: BaseListController, UICollectionViewDelegateFlowLa
         cell.results = results[indexPath.item]
         return cell
     }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let appId = self.results[indexPath.item].id
+        let detailController = AppDetailController(appId: appId)
+        navigationController?.pushViewController(detailController, animated: true)
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return .init(width: view.frame.width, height: 64)
+        if mode == .fullscreen {
+            return .init(width: view.frame.width - 48, height: 64)
+        }else{
+            return .init(width: view.frame.width, height: 64)
+        }
+        
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if mode == .fullscreen {
+            
+            return .init(
+                top: 50, left: 24, bottom: 12, right: 24)
+        }
+        
+        return .zero
+    }
     enum Mode {
-        case fullScreen, small
+        case small, fullscreen
     }
     
     init(mode: Mode) {

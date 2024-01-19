@@ -20,6 +20,9 @@ class AppFullscreenController: UITableViewController {
         tableView.allowsSelection = false
     }
     
+    override var prefersStatusBarHidden: Bool { return true }
+
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }

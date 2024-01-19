@@ -19,7 +19,7 @@ class PreviewCell: UICollectionViewCell {
         addSubview(prevLabel)
         addSubview(prevHorizontalController.view)
         
-        prevLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing:  trailingAnchor, padding: .init(top: 0, left: 20, bottom: 0, right: 20))
+        prevLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing:  trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
         
         prevHorizontalController.view.anchor(top: prevLabel.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
     }

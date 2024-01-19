@@ -9,26 +9,18 @@ import Foundation
 
 class Service {
     
-    static let shared = Service() // Singleton
-    
+    static let shared = Service()
     
     //Generic Network Call
     func fetchGenericCall<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> Void) {
         
         guard let url = URL(string: urlString) else { return }
-        
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
             
-            //Error Control
-            
             if err != nil {
-                
                 completion(nil, err)
                 return
             }
-            
-            //Succes
-            
             do{
                 let results = try JSONDecoder().decode(T.self, from: data!)
                 completion(results, nil)
@@ -38,38 +30,31 @@ class Service {
         }.resume()
     }
     
-    // 1
+    // Free Apps
     func fetchFreeApps(completion: @escaping (AppGroup?, Error?) -> ()) {
         
          let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json"
-        
         fetchGenericCall(urlString: urlString, completion: completion)
     }
     
-    // 2
+    // Paid Apps
     func fetchPaidApps(completion: @escaping (AppGroup?, Error?) -> ()) {
         
         let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/25/apps.json"
-        
         fetchGenericCall(urlString: urlString, completion: completion)
     }
     
-    // 3
+    // Albums
     func fetchTopAlbums(completion: @escaping (AppGroup?, Error?) -> ()) {
         
         let urlString = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/10/albums.json"
-        
         fetchGenericCall(urlString: urlString, completion: completion)
     }
-    
-
     
     //Social Apps
     func fetchSocialApps(completion: @escaping ([SocialApps]?, Error?) -> Void) {
         
         let urlString = "https://api.letsbuildthatapp.com/appstore/social"
-        
-
         fetchGenericCall(urlString: urlString, completion: completion)
     }
     
@@ -77,7 +62,6 @@ class Service {
     func fethItunes(searchTerm: String, completion: @escaping (SearchResult?, Error?) -> ()) {
             
             let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
- 
             fetchGenericCall(urlString: urlString, completion: completion)
     }
 }

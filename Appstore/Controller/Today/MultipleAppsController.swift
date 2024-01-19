@@ -17,18 +17,6 @@ class MultipleAppsController: BaseListController, UICollectionViewDelegateFlowLa
         
         collectionView.register(MultipleAppsCell.self, forCellWithReuseIdentifier: cellId)
     
-        fetchService()
-    }
-    func fetchService() {
-        Service.shared.fetchFreeApps { (appGroup, err) in
-            
-            self.results = appGroup?.feed.results ?? []
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                
-                                
-            }
-        }
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 

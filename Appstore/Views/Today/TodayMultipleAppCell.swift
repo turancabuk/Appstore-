@@ -15,6 +15,10 @@ class TodayMultipleAppCell: BaseTodayCell {
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
+            backgroundColor = todayItem.backgroundColor
+            
+            multipleAppsController.results = todayItem.apps
+            multipleAppsController.collectionView.reloadData()
         }
     }
     let categoryLabel = UILabel()

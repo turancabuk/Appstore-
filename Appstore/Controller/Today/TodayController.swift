@@ -10,16 +10,26 @@ import UIKit
 class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     var appFullscreenController: AppFullscreenController!
+    
     var topConstraint: NSLayoutConstraint?
     var leadingConstraint: NSLayoutConstraint?
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     var startingFrame: CGRect?
-    let items = [
-        TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These Carplay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, celltype: .multiple),
-        TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, celltype: .single),
-        TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), celltype: .single)
-    ]
+    
+    var items = [TodayItem]()
+    var dispatchGroup = DispatchGroup()
+    var freeApps: AppGroup?
+    var paidApps: AppGroup?
+    
+    var activityIndicator: UIActivityIndicatorView = {
+    
+        let aiv = UIActivityIndicatorView(style: .large)
+        aiv.color = .darkGray
+        aiv.hidesWhenStopped = true
+        aiv.startAnimating()
+        return aiv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +39,41 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayItem.CellType.single.rawValue)
         collectionView.register(TodayMultipleAppCell.self, forCellWithReuseIdentifier: TodayItem.CellType.multiple.rawValue)
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.fillSuperview()
+        
+        fetchData()
+    }
+    fileprivate func fetchData() {
+        
+        dispatchGroup.enter()
+        Service.shared.fetchPaidApps { (appGroup, err) in
+            
+            self.paidApps = appGroup
+            self.dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchFreeApps { (appGroup, err) in
+            
+            self.freeApps = appGroup
+            self.dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            
+            self.collectionView.reloadData()
+            self.activityIndicator.stopAnimating()
+            
+            self.items = [
+                TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), celltype: .single, apps: []),
+                TodayItem.init(category: "Daily List", title: self.paidApps?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, celltype: .multiple, apps: self.paidApps?.feed.results ?? []),
+                TodayItem.init(category: "LIFE HACK", title: "Utilizing Your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, celltype: .single, apps: self.freeApps?.feed.results ?? []),
+                TodayItem.init(category: "THE DAILY LIST", title: "Test-Drive These Carplay Apps", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, celltype: .multiple, apps: self.freeApps?.feed.results ?? [])
+            ]
+            self.collectionView.reloadData()
+        }
     }
     @objc func handleRemoveRedView() {
         self.navigationController?.navigationBar.isHidden = false
@@ -43,7 +88,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.heightConstraint?.constant = startingFrame.height
             
             self.view.layoutIfNeeded()
-        
+            
             if let tabBarFrame = self.tabBarController?.tabBar.frame {
                 self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - tabBarFrame.height
             }
@@ -78,7 +123,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         }
         let fullscreenView = appFullscreenController.view!
         view.addSubview(fullscreenView)
-
+        
         addChild(appFullscreenController)
         
         self.appFullscreenController = appFullscreenController
@@ -87,7 +132,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
         
         self.startingFrame = startingFrame
-
+        
         fullscreenView.translatesAutoresizingMaskIntoConstraints = false
         topConstraint = fullscreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
         leadingConstraint = fullscreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
@@ -100,7 +145,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         fullscreenView.layer.cornerRadius = 16
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-
+            
             self.topConstraint?.constant = 0
             self.leadingConstraint?.constant = 0
             self.widthConstraint?.constant = self.view.frame.width
@@ -108,7 +153,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             
             self.view.layoutIfNeeded() // starts animation
             self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height
-
+            
         }, completion: nil)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -122,5 +167,4 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 32, left: 0, bottom: 32, right: 0)
     }
-    
 }

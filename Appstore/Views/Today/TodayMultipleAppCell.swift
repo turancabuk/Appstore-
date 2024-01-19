@@ -9,7 +9,7 @@ import UIKit
 
 class TodayMultipleAppCell: BaseTodayCell {
     
-    let multipleAppsController = MultipleAppsController()
+    let multipleAppsController = MultipleAppsController(mode: .small)
 
     override var todayItem: TodayItem! {
         didSet {

@@ -16,6 +16,7 @@ class TodayCell: BaseTodayCell {
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description
             backgroundColor = todayItem.backgroundColor
+            backgroundView?.backgroundColor = todayItem.backgroundColor
         }
     }
     
@@ -30,9 +31,10 @@ class TodayCell: BaseTodayCell {
         
         backgroundColor = .white
         layer.cornerRadius = 16
-        clipsToBounds = true
         
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+
         titleLabel.numberOfLines = 0
         categoryLabel.font = .boldSystemFont(ofSize: 20)
         titleLabel.font = .boldSystemFont(ofSize: 26)

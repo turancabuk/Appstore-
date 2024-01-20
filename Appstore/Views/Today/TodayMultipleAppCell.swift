@@ -27,9 +27,10 @@ class TodayMultipleAppCell: BaseTodayCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+
         backgroundColor = .white
-        layer.cornerRadius = 16
-        clipsToBounds = true
+        layer.cornerRadius = 10
+        clipsToBounds = false
         
         titleLabel.numberOfLines = 0
         categoryLabel.font = .boldSystemFont(ofSize: 20)

@@ -24,7 +24,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     var paidApps: AppGroup?
     
     var activityIndicator: UIActivityIndicatorView = {
-    
         let aiv = UIActivityIndicatorView(style: .large)
         aiv.color = .darkGray
         aiv.hidesWhenStopped = true
@@ -76,6 +75,13 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.collectionView.reloadData()
         }
     }
+    fileprivate func showDailyListFullScreen(_ indexPath: IndexPath) {
+        let fullController = MultipleAppsController(mode: .fullscreen)
+        fullController.results = self.items[indexPath.item].apps
+        let navController = UINavigationController(rootViewController: fullController)
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true)
+    }
     @objc func handleRemoveRedView() {
         self.navigationController?.navigationBar.isHidden = false
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
@@ -120,27 +126,39 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        if items[indexPath.item].celltype == .multiple {
-            let fullController = MultipleAppsController(mode: .fullscreen)
-            fullController.results = self.items[indexPath.item].apps
-            let navController = UINavigationController(rootViewController: fullController)
-            navController.modalPresentationStyle = .fullScreen
-            present(navController, animated: true)
+        switch items[indexPath.item].celltype {
             
-            return
+        case .multiple:
+            showDailyListFullScreen(indexPath)
+        default:
+            showSingleAppFullScreen(indexPath: indexPath)
         }
+
+    }
+    fileprivate func showSingleAppFullScreen(indexPath: IndexPath) {
+
+        // #1 setup fullscreen Controller
+        setupSingleAppFullscreenController(indexpath: indexPath)
+        // #2 setup fullscreen in its startşng position
+        setupAppFullscreenStartingPoistion(indexPath: indexPath)
+        // #3 begin the fullscreen animation
+        beginAnimationFullscreen()
+    }
+    fileprivate func setupSingleAppFullscreenController( indexpath: IndexPath) {
         
         let appFullscreenController = AppFullscreenController()
-        appFullscreenController.todayItem = items[indexPath.row]
+        appFullscreenController.todayItem = items[indexpath.row]
         appFullscreenController.dismissHandler = {
             self.handleRemoveRedView()
         }
+        self.appFullscreenController = appFullscreenController 
+        appFullscreenController.view.layer.cornerRadius = 16
+    }
+    fileprivate func setupAppFullscreenStartingPoistion(indexPath: IndexPath) {
+        
         let fullscreenView = appFullscreenController.view!
         view.addSubview(fullscreenView)
-        
         addChild(appFullscreenController)
-        
-        self.appFullscreenController = appFullscreenController
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
@@ -155,8 +173,8 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
         self.view.layoutIfNeeded()
-        
-        fullscreenView.layer.cornerRadius = 16
+    }
+    fileprivate func beginAnimationFullscreen() {
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
@@ -185,19 +203,14 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         let collectionView = gesture.view
         var superView = collectionView?.superview
         
-        
         while superView != nil {
             if let cell = superView as? TodayMultipleAppCell {
                 
                 guard let indexPath = self.collectionView.indexPath(for: cell) else {return}
-                let apps = self.items[indexPath.item].apps
-                let fullController = MultipleAppsController(mode: .fullscreen)
-                fullController.results = apps
-                let navController = UINavigationController(rootViewController: fullController)
-                navController.modalPresentationStyle = .fullScreen
-                present(navController, animated: true)
+                showDailyListFullScreen(indexPath)
             }
             superView = superView?.superview
         }
     }
 }
+

@@ -16,7 +16,7 @@ class BaseTodayCell: UICollectionViewCell {
         didSet {
             let transform: CGAffineTransform = .init(scaleX: 0.9, y: 0.9)
             if isHighlighted {
-                print("is Highlighted \(isHighlighted)")
+                
                 UIView.animate(
                     withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1,options: .curveEaseInOut,animations:  {
                         self.transform = transform

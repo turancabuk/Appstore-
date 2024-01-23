@@ -44,6 +44,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         activityIndicator.fillSuperview()
         
         fetchData()
+        
     }
     fileprivate func fetchData() {
         
@@ -82,7 +83,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true)
     }
-    @objc func handleRemoveRedView() {
+    @objc func handleAppFullscreenDismissal() {
         self.navigationController?.navigationBar.isHidden = false
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
@@ -109,7 +110,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.appFullscreenController.removeFromParent()
         })
     }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
@@ -149,7 +149,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         let appFullscreenController = AppFullscreenController()
         appFullscreenController.todayItem = items[indexpath.row]
         appFullscreenController.dismissHandler = {
-            self.handleRemoveRedView()
+            self.handleAppFullscreenDismissal()
         }
         self.appFullscreenController = appFullscreenController 
         appFullscreenController.view.layer.cornerRadius = 16

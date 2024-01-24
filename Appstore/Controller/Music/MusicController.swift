@@ -11,13 +11,8 @@ class MusicController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"
     fileprivate let footerId = "footerId"
-    var musics: AppGroup? {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    fileprivate var searchTerm = "taylor"
+    var results = [Result]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +25,16 @@ class MusicController: BaseListController, UICollectionViewDelegateFlowLayout {
         
     }
     fileprivate func fetchAlbums() {
-        Service.shared.fetchTopAlbums { (appGroup, err) in
-            self.musics = appGroup
+        
+        let urlString = "https://itunes.apple.com/search?term=taylor&offset=0&limit=20"
+        Service.shared.fetchGenericCall(urlString: urlString) { (searchResult: SearchResult?, err) in
+
+            if  err != nil {
+                fatalError()
+            }else{
+                
+                self.results = searchResult?.results ?? []
+            }
         }
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -44,22 +47,36 @@ class MusicController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return musics?.feed.results.count ?? 0
+        return results.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TrackCell
-        let albums = self.musics?.feed.results[indexPath.item]
-        cell.artistLabel.text = albums?.artistName
-        cell.songLabel.text = albums?.name
-        cell.imageView.sd_setImage(with: URL(string: albums?.artworkUrl100 ?? ""))
+        let albums = self.results[indexPath.item]
+        cell.songLabel.text = albums.trackName
+        cell.artistLabel.text = "\(albums.artistName ?? "") * \(albums.collectionName ?? "")"
+        cell.imageView.sd_setImage(with: URL(string: albums.artworkUrl100))
+        
+        if indexPath.item == results.count - 1 {
+            
+            let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&offset=\(results.count)&limit=20"
+            Service.shared.fetchGenericCall(urlString: urlString) { (searchResult: SearchResult?, err) in
+
+                if  err != nil {
+                    fatalError()
+                }
+                sleep(1)
+                self.results += searchResult?.results ?? []
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
         return cell
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width, height: 100)
     }
-    
 }
 
 

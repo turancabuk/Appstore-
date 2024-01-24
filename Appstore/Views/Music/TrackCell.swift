@@ -10,9 +10,8 @@ import UIKit
 class TrackCell: UICollectionViewCell {
     
     let imageView = UIImageView(cornerRadius: 6)
-    let artistLabel = UILabel(text: "", Font: .boldSystemFont(ofSize: 14), numberOfLines: 0)
-    let songLabel = UILabel(text: "", Font: .systemFont(ofSize: 12), numberOfLines: 0)
- 
+    let songLabel = UILabel(text: "", Font: .boldSystemFont(ofSize: 16), numberOfLines: 0)
+    let artistLabel = UILabel(text: "", Font: .systemFont(ofSize: 14), numberOfLines: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +22,7 @@ class TrackCell: UICollectionViewCell {
         
         let stackView = UIStackView(arrangedSubviews: [
             imageView, VerticalStackView(arrangedSubviews: [
-            artistLabel, songLabel
+            songLabel, artistLabel
             ], spacing: 4)
         ], customSpacing:  16)
         

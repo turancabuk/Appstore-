@@ -10,22 +10,21 @@ import UIKit
 class TrackCell: UICollectionViewCell {
     
     let imageView = UIImageView(cornerRadius: 6)
-    let artistLabel = UILabel(text: "Song Name", Font: .boldSystemFont(ofSize: 14), numberOfLines: 0)
-    let songLabel = UILabel(text: "Artist Name", Font: .systemFont(ofSize: 12), numberOfLines: 0)
+    let artistLabel = UILabel(text: "", Font: .boldSystemFont(ofSize: 14), numberOfLines: 0)
+    let songLabel = UILabel(text: "", Font: .systemFont(ofSize: 12), numberOfLines: 0)
+ 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         layer.cornerRadius = 16
-        imageView.image = #imageLiteral(resourceName: "garden")
-        imageView.backgroundColor = .clear
         imageView.constrainWidth(constant: 86)
         imageView.constrainHeight(constant: 86)
         
         let stackView = UIStackView(arrangedSubviews: [
             imageView, VerticalStackView(arrangedSubviews: [
             artistLabel, songLabel
-            ], spacing: 2)
+            ], spacing: 4)
         ], customSpacing:  16)
         
         addSubview(stackView)

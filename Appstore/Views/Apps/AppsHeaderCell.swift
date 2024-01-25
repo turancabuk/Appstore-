@@ -28,7 +28,7 @@ class AppsHeaderCell: UICollectionViewCell {
         titleLabel.numberOfLines = 2
         titleLabel.font = .systemFont(ofSize: 24)
         imageView.layer.cornerRadius = 8
-        
+        imageView.image = #imageLiteral(resourceName: "garden")
         
         let stackView = VerticalStackView(arrangedSubviews: [
         companyLabel, titleLabel, imageView

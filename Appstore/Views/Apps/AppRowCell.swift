@@ -10,8 +10,8 @@ import UIKit
 class AppRowCell: UICollectionViewCell {
     
     let imageView = UIImageView()
-    let nameLabel = UILabel()
-    let companyLabel = UILabel()
+    let nameLabel = UILabel(text: "Deneme")
+    let companyLabel = UILabel(text: "deneme")
     let getButton = UIButton(title: "GET")
      
     override init(frame: CGRect) {
@@ -20,6 +20,7 @@ class AppRowCell: UICollectionViewCell {
         imageView.constrainWidth(constant: 64)
         imageView.constrainHeight(constant: 64)
         imageView.layer.cornerRadius = 8
+        imageView.image = #imageLiteral(resourceName: "garden")
         
         nameLabel.font = .systemFont(ofSize: 16)
         nameLabel.numberOfLines = 2

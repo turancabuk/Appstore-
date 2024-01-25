@@ -28,7 +28,7 @@ class PreviewScreenshotsController: HorizontalSnappingController, UICollectionVi
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return app?.screenshotUrls!.count ?? 0
+        return app?.screenshotUrls?.count ?? 0
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

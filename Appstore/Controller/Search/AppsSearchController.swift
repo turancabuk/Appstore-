@@ -46,7 +46,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     }
     fileprivate func fetchITunesApps() {
         
-        Service.shared.fethItunes(searchTerm: "Facebook") { (resp, Error) in
+        Service.shared.fethItunes(searchTerm: "Instagram") { (resp, Error) in
             self.appResults = resp?.results ?? []
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

@@ -44,6 +44,7 @@
 		5CA5A3732B60364300E66B26 /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5A3722B60364300E66B26 /* MusicController.swift */; };
 		5CA5A3752B60371800E66B26 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5A3742B60371800E66B26 /* TrackCell.swift */; };
 		5CA5A3772B6107C400E66B26 /* MusicLoadingFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5A3762B6107C400E66B26 /* MusicLoadingFooter.swift */; };
+		5CA5A37C2B61731600E66B26 /* AppsCompositionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA5A37B2B61731600E66B26 /* AppsCompositionalView.swift */; };
 		5CBA79292B529394007DD613 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA79282B529394007DD613 /* PreviewCell.swift */; };
 		5CBA792B2B529625007DD613 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA792A2B529625007DD613 /* PreviewScreenshotsController.swift */; };
 		5CBA792D2B52D601007DD613 /* ScreenshotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBA792C2B52D601007DD613 /* ScreenshotCell.swift */; };
@@ -97,6 +98,7 @@
 		5CA5A3722B60364300E66B26 /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
 		5CA5A3742B60371800E66B26 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		5CA5A3762B6107C400E66B26 /* MusicLoadingFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLoadingFooter.swift; sourceTree = "<group>"; };
+		5CA5A37B2B61731600E66B26 /* AppsCompositionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsCompositionalView.swift; sourceTree = "<group>"; };
 		5CBA79282B529394007DD613 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		5CBA792A2B529625007DD613 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
 		5CBA792C2B52D601007DD613 /* ScreenshotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotCell.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		5C82A2742B4C0725002B183B /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				5CA5A3782B61720900E66B26 /* Compositional */,
 				5CB17C852B51B2FB00A2281A /* Details */,
 				5C82A2752B4C0740002B183B /* AppsPageController.swift */,
 				5C82A27D2B4C1B1E002B183B /* AppsHorizontalController.swift */,
@@ -274,6 +277,14 @@
 				5CA5A3762B6107C400E66B26 /* MusicLoadingFooter.swift */,
 			);
 			path = Music;
+			sourceTree = "<group>";
+		};
+		5CA5A3782B61720900E66B26 /* Compositional */ = {
+			isa = PBXGroup;
+			children = (
+				5CA5A37B2B61731600E66B26 /* AppsCompositionalView.swift */,
+			);
+			path = Compositional;
 			sourceTree = "<group>";
 		};
 		5CB17C852B51B2FB00A2281A /* Details */ = {
@@ -403,6 +414,7 @@
 				5CBA79332B52DCEF007DD613 /* ReviewsController.swift in Sources */,
 				5C9C3C302B45E7540038D4C8 /* AppDelegate.swift in Sources */,
 				5C82A25F2B46DCCD002B183B /* AppsSearchController.swift in Sources */,
+				5CA5A37C2B61731600E66B26 /* AppsCompositionalView.swift in Sources */,
 				5C82A2672B47201B002B183B /* VerticalStackView.swift in Sources */,
 				5CBA79372B540FB3007DD613 /* Reviews.swift in Sources */,
 				5C82A26C2B485795002B183B /* Service.swift in Sources */,

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImage
 
 class CompositionalController: UICollectionViewController {
     
@@ -15,6 +14,13 @@ class CompositionalController: UICollectionViewController {
     var paidApps: AppGroup?
     var albums: AppGroup?
     var appGroup: AppGroup?
+    var activityIndicator: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: .large)
+        aiv.color = .darkGray
+        aiv.hidesWhenStopped = true
+        aiv.startAnimating()
+        return aiv
+    }()
     
     init() {
         let layout = UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
@@ -63,6 +69,8 @@ class CompositionalController: UICollectionViewController {
         navigationItem.title = "Apps"
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        view.addSubview(activityIndicator)
+        activityIndicator.centerInSuperview()
         fetchDispatchGroup()
     }
     static func topSection() -> NSCollectionLayoutSection {
@@ -199,6 +207,7 @@ extension CompositionalController {
         dispatchGroup.notify(queue: .main) {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
     }

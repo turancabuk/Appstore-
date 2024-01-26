@@ -10,9 +10,16 @@ import UIKit
 class AppRowCell: UICollectionViewCell {
     
     let imageView = UIImageView()
-    let nameLabel = UILabel(text: "Deneme")
-    let companyLabel = UILabel(text: "deneme")
+    let nameLabel = UILabel()
+    let companyLabel = UILabel()
     let getButton = UIButton(title: "GET")
+    var app: FeedResult? {
+        didSet {
+            nameLabel.text = app?.name
+            companyLabel.text = app?.artistName
+            imageView.sd_setImage(with: URL(string: app?.artworkUrl100 ?? ""))
+        }
+    }
      
     override init(frame: CGRect) {
         super.init(frame: frame)
